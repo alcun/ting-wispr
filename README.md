@@ -35,7 +35,7 @@ Then:
 1. Allow tingle Microphone and Accessibility.
 2. tingle menu > Input device > your adapter's Line IN.
 3. Unplug the TING, press the button above its USB port, squeeze to start.
-   Hold one squeeze for about 6s so tingle learns the chirp level.
+   Hold the first squeeze after power-on for about 7s so tingle learns the chirp level.
 4. Wispr > Settings > Shortcuts > Push to talk > **+**, then squeeze the TING.
    It should record ctrl+opt+F12.
 5. Set Wispr's microphone to the adapter's Line IN.

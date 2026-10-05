@@ -56,7 +56,7 @@ _t = {'sam': sam_pos, 'fx': fx_pos, 'hdl': ui.sw(4), 'cand': ui.sw(4),
       'lastms': _tms() if _tms else 0,
       # handle-rate tracking for the mash fast-path (hv = last value,
       # rr = consecutive fast-rise ticks)
-      'hv': 0.0, 'rr': 0, 'fr': 0}
+      'hv': 0.0, 'rr': 0, 'fr': 0, 'learn': 3}   # see _LEARN_BEACONS
 
 # Ticks between queued symbol triggers: 2 ticks ~= 29ms at fw 1.0.8's
 # ~70Hz -- 25ms symbols with ~4ms gaps (measured clean at 30ms spacing,
@@ -76,6 +76,9 @@ _T_BEACON = 122
 # ting-wispr: heartbeat only while held, and rarely -- the release is
 # followed by two beacons, which re-lock tingle and heal a missed edge.
 _T_BEACON_HELD = 600   # ~10s
+# The first hold after power-on beacons every ~2s for 3 beacons, so any
+# Mac can do tingle's full 3-beacon acquisition and learn the level.
+_LEARN_BEACONS = 3   # initial value of _t['learn']
 # Slot self-heal: fw <= 1.0.5 reloads FACTORY samples after battery sleep
 # (TE changelog 1.0.6: "factory samples are no longer loaded after sleep";
 # observed 2026-07-11 on fw 1.0.4 -- audible TE samples on every beacon,
@@ -235,12 +238,15 @@ def _tingle_cb(m):
         # Beacon heartbeat (ting-wispr: only while the handle is held): fire only when the queue is idle so event
         # chirps always take precedence and sequences never interleave.
         _t['bcn'] += 1
-        if _t['bcn'] >= _T_BEACON_HELD and _t['hdl'] and not _t['q'] and not _t['heal']:
+        _period = _T_BEACON if _t['learn'] > 0 else _T_BEACON_HELD
+        if _t['bcn'] >= _period and _t['hdl'] and not _t['q'] and not _t['heal']:
             _t['bcn'] = 0
             # Audio-only heartbeat; over serial the q() poll's state header
             # carries liveness + handle state instead.
             if _t['hdl']:
                 _word(1)
+                if _t['learn'] > 0:
+                    _t['learn'] -= 1
             else:
                 _word(0)
         # Play queued tones, evenly spaced.
