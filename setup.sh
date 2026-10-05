@@ -16,8 +16,9 @@ cp config.toml "$HOME/Library/Application Support/tingle/config.toml"
 open -a tingle
 
 cat <<'MSG'
-Done. Now:
- 1. Allow tingle Microphone + Accessibility when asked.
- 2. tingle menu > Input device > your adapter's Line IN.
- 3. Wispr > Settings > Shortcuts > Push to talk > + , then squeeze the TING.
+Done. Allow tingle Microphone + Accessibility, then:
+ - First time with this TING? Plug it in over USB-C and run ./install-ting.sh
+ - tingle menu > Input device > your adapter's Line IN
+ - Wispr > Settings > microphone > the same Line IN
+ - Wispr > Shortcuts > Push to talk > + , then squeeze the TING
 MSG
