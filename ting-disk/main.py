@@ -222,6 +222,11 @@ def _tingle_cb(m):
                 _word(3)
                 _word(0)
         _t['clk'] += 1
+        # ting-wispr: the firmware can load its own samples into the slots
+        # after boot, so chirps play as bells until healed. Re-arm all four
+        # slots a few times early on (~0.5s, 2s, 5s, 10s).
+        if _t['clk'] in (30, 120, 300, 600) and not _t['heal']:
+            _t['heal'] = [1, 3, 0, 2]
         # Beacon heartbeat (ting-wispr: only while the handle is held): fire only when the queue is idle so event
         # chirps always take precedence and sequences never interleave.
         _t['bcn'] += 1
