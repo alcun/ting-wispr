@@ -10,7 +10,7 @@ signals. This repo adds:
 - **tinghold**: holds ctrl+opt+F12 while you squeeze, as real key presses, so Wispr
   takes it as its push-to-talk key.
 - **A quieter TING script**: tingle's script with no chirps while idle, and chirps at
-  about 1/16 volume. Chirps only play on squeeze, on release, every 10s while held,
+  about 1/6 volume. Chirps only play on squeeze, on release, every 10s while held,
   and on the middle and bottom buttons.
 - **Effect presets with chirps kept clean**: echo, spring, pixie, robot. The sample
   slot is last in each chain, so the chirps skip the effects. Shake adds reverb.
