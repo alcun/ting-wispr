@@ -57,6 +57,16 @@ Use clean for dictation. Wispr types the echo repeats too.
 - The built-in samples (horn, claps, bell) are gone. The chirps use their slots.
 - Firmware is not touched. `install-ting.sh` backs up the TING's disk to `~/Documents/`.
 
+## If it doesn't work
+
+- **Wispr doesn't react to a squeeze:** System Settings → Privacy & Security →
+  Accessibility (and Microphone): turn tingle on, or off and on again. Then
+  `pkill tingle; open -a tingle`.
+- **No tingle icon in the menu bar:** it's probably hidden behind the notch.
+  `pgrep -l tingle` shows whether it's running.
+- **No admin rights:** `setup.sh` installs tingle to `~/Applications` instead.
+- **Still nothing:** turn the TING off and on, and hold the first squeeze for about 7s.
+
 ## Undo
 
 - TING: delete `main.py`, `config.json` and `1.wav` to `4.wav` from its disk.
