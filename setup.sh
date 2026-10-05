@@ -3,7 +3,15 @@
 set -e
 cd "$(dirname "$0")"
 command -v brew >/dev/null || { echo "Needs Homebrew: https://brew.sh"; exit 1; }
-[ -d /Applications/tingle.app ] || brew install --cask tutorintelligence/tap/tingle
+# No admin rights needed: fall back to ~/Applications if /Applications is not writable.
+if [ ! -d /Applications/tingle.app ] && [ ! -d ~/Applications/tingle.app ]; then
+  if [ -w /Applications ]; then
+    brew install --cask tutorintelligence/tap/tingle
+  else
+    mkdir -p ~/Applications
+    brew install --cask --appdir="$HOME/Applications" tutorintelligence/tap/tingle
+  fi
+fi
 
 mkdir -p ~/.local/bin "$HOME/Library/Application Support/tingle"
 if command -v swiftc >/dev/null; then
