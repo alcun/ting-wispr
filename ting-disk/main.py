@@ -147,7 +147,9 @@ def _tingle_cb(m):
     # "sample feedback" is ultrasonic anyway, so nothing audible is lost.
     if t == 1 and v == 0:
         _say('EVT white_down', sam_pos, fx_pos)
-        # ting-wispr: buttons stay silent; only the handle signals.
+        # ting-wispr: white and green signal the Mac; orange stays silent.
+        _word(0)   # beacon first so an idle tingle re-locks
+        _word(4 + sam_pos)
         return
     if t == 2 and v == 0:
         _say('EVT white_up', sam_pos, fx_pos)
@@ -170,6 +172,8 @@ def _tingle_cb(m):
         if sam_pos != _t['sam']:
             _t['sam'] = sam_pos
             _say('EVT mode', sam_pos)
+            _word(0)
+            _word(8 + sam_pos)
         if fx_pos != _t['fx']:
             _t['fx'] = fx_pos
             _say('EVT fx', fx_pos)

@@ -9,9 +9,9 @@ signals. This repo adds:
 
 - **tinghold**: holds ctrl+opt+F12 while you squeeze, as real key presses, so Wispr
   takes it as its push-to-talk key.
-- **A quieter TING script**: tingle's script with no chirps while idle or on button
-  presses, and chirps at about 1/6 volume. Chirps only play on squeeze, on release,
-  and every 2s while held.
+- **A quieter TING script**: tingle's script with no chirps while idle, and chirps at
+  about 1/6 volume. Chirps only play on squeeze, on release, every 2s while held,
+  and on the white and green buttons.
 - **Effect presets with chirps kept clean**: echo, spring, pixie, robot. The sample
   slot is last in each chain, so the chirps skip the effects. Shake adds reverb.
 - **An installer that works on firmware 1.0.9**, where the disk is called FX MIC DISK.
@@ -45,7 +45,7 @@ Then:
 - tingle's chirps fill the TING's four sample slots, so the horn/claps/bell samples
   and the white button do nothing.
 - The chirps are 16.5-19.5 kHz. They are quiet, but you may still hear them.
-- Buttons do nothing on the Mac. The orange button still changes effects on the TING.
+- White = Enter, green = cmd+Z (undo), each with a quiet chirp. Orange changes effects, silently.
 
 ## Undo
 
