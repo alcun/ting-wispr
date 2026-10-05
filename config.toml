@@ -1,0 +1,10 @@
+# Squeeze holds ctrl+opt+F12 (Wispr's push-to-talk) via ~/.local/bin/tinghold,
+# which presses real modifier keys. tingle does not dictate.
+# Buttons do nothing on the Mac; they only change effects/samples on the TING.
+# Undo: delete this file.
+[mappings]
+triggerDown = { type = "shell", command = "$HOME/.local/bin/tinghold down" }
+triggerUp = { type = "shell", command = "$HOME/.local/bin/tinghold up" }
+fxChange = { type = "shell", command = "true" }
+modeChange = { type = "shell", command = "true" }
+white = { type = "shell", command = "true" }
