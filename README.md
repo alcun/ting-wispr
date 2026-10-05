@@ -11,7 +11,7 @@ signals. This repo adds:
   takes it as its push-to-talk key.
 - **A quieter TING script**: tingle's script with no chirps while idle, and chirps at
   about 1/6 volume. Chirps only play on squeeze, on release, every 2s while held,
-  and on the white and green buttons.
+  and on the middle and bottom buttons.
 - **Effect presets with chirps kept clean**: echo, spring, pixie, robot. The sample
   slot is last in each chain, so the chirps skip the effects. Shake adds reverb.
 - **An installer that works on firmware 1.0.9**, where the disk is called FX MIC DISK.
@@ -43,9 +43,10 @@ Then:
 ## Trade-offs
 
 - tingle's chirps fill the TING's four sample slots, so the horn/claps/bell samples
-  and the white button do nothing.
+  and the bottom button no longer play samples.
 - The chirps are 16.5-19.5 kHz. They are quiet, but you may still hear them.
-- White = Enter, green = cmd+Z (undo), each with a quiet chirp. Orange changes effects, silently.
+- Bottom button = Enter, middle = cmd+Z (undo), each with a quiet chirp. Top (orange)
+  changes effects, silently. tingle calls these "white", "green" and "orange".
 
 ## Undo
 

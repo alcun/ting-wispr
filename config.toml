@@ -1,6 +1,6 @@
 # Squeeze holds ctrl+opt+F12 (Wispr's push-to-talk) via ~/.local/bin/tinghold,
 # which presses real modifier keys. tingle does not dictate.
-# White = Enter, green = cmd+Z (undo). Orange only changes effects on the TING.
+# Bottom button (tingle: white) = Enter, middle (green) = cmd+Z. Top (orange) = effects only.
 # Undo: delete this file.
 [mappings]
 triggerDown = { type = "shell", command = "$HOME/.local/bin/tinghold down" }
