@@ -6,5 +6,5 @@
 triggerDown = { type = "shell", command = "$HOME/.local/bin/tinghold down" }
 triggerUp = { type = "shell", command = "$HOME/.local/bin/tinghold up" }
 fxChange = { type = "shell", command = "true" }
-modeChange = { type = "keystroke", key = "z", modifiers = ["cmd"] }
+modeChange = { type = "shell", command = "$HOME/.local/bin/tinghold undo" }
 white = { type = "keystroke", key = "return" }
