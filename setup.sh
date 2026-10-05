@@ -20,6 +20,8 @@ else
   cp tinghold ~/.local/bin/tinghold
 fi
 chmod +x ~/.local/bin/tinghold
+cp ting ~/.local/bin/ting && chmod +x ~/.local/bin/ting
+grep -q '.local/bin' ~/.zshrc 2>/dev/null || echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 cp config.toml "$HOME/Library/Application Support/tingle/config.toml"
 open -a tingle
 

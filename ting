@@ -1,0 +1,3 @@
+#!/bin/zsh
+# Restart tingle, e.g. after moving the adapter to this Mac.
+pkill -x tingle; sleep 1; open -a tingle && echo "tingle restarted"

@@ -66,7 +66,7 @@ Use clean for dictation. Wispr types the echo repeats too.
   `pgrep -l tingle` shows whether it's running.
 - **No admin rights:** `setup.sh` installs tingle to `~/Applications` instead.
 - **Stopped working after moving the adapter between Macs:** tingle doesn't always
-  reconnect. Run `pkill tingle; open -a tingle`.
+  reconnect. Type `ting` in Terminal to restart it.
 - **Still nothing:** turn the TING off and on, and hold the first squeeze for about 7s.
 
 ## Undo
