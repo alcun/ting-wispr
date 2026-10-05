@@ -73,6 +73,9 @@ _T_HDL_DEBOUNCE = 3   # ~50ms; longer than bounce, shorter than any real press
 # period = 16% line duty; fast enough for ~5s auto-discovery and ~6s
 # loss detection without meaningfully delaying event chirps.
 _T_BEACON = 122
+# ting-wispr: heartbeat only while held, and rarely -- the release is
+# followed by two beacons, which re-lock tingle and heal a missed edge.
+_T_BEACON_HELD = 600   # ~10s
 # Slot self-heal: fw <= 1.0.5 reloads FACTORY samples after battery sleep
 # (TE changelog 1.0.6: "factory samples are no longer loaded after sleep";
 # observed 2026-07-11 on fw 1.0.4 -- audible TE samples on every beacon,
@@ -215,11 +218,13 @@ def _tingle_cb(m):
             # the one after trigger_up heals a missed release.
             if h:
                 _say('EVT trigger_down')
+                _t['bcn'] = 0
                 _word(1)
                 _word(2)
             else:
                 _say('EVT trigger_up')
                 _word(3)
+                _word(0)
                 _word(0)
         _t['clk'] += 1
         # ting-wispr: the firmware can load its own samples into the slots
@@ -230,7 +235,7 @@ def _tingle_cb(m):
         # Beacon heartbeat (ting-wispr: only while the handle is held): fire only when the queue is idle so event
         # chirps always take precedence and sequences never interleave.
         _t['bcn'] += 1
-        if _t['bcn'] >= _T_BEACON and _t['hdl'] and not _t['q'] and not _t['heal']:
+        if _t['bcn'] >= _T_BEACON_HELD and _t['hdl'] and not _t['q'] and not _t['heal']:
             _t['bcn'] = 0
             # Audio-only heartbeat; over serial the q() poll's state header
             # carries liveness + handle state instead.
