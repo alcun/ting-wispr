@@ -34,6 +34,10 @@ Unplug it, press the small button above its USB port, then squeeze to turn it on
 - Wispr → Settings → Shortcuts → Push to talk → **+**, then squeeze the TING.
   It records ctrl+opt+F12.
 
+Using [Heyra](https://github.com/alcun/heyra-desktop) instead of Wispr (local and free:
+`brew install --cask alcun/tap/heyra`)? It already listens for ctrl+opt+F12, so there is no
+shortcut to record. Heyra → Settings → Microphone → the adapter's Line IN.
+
 **4. Go**
 
 Hold the first squeeze after turning the TING on for about 7 seconds. Then squeeze and talk.
